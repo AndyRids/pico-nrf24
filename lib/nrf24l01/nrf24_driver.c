@@ -219,7 +219,7 @@ fn_status_t nrf_driver_initialise(nrf_manager_t *user_config) {
 
   nrf_manager_t *config = &(nrf_driver.user_config);
 
-  fn_status_t status = ERROR;
+  fn_status_t status = NRF_MNGR_OK;
 
   // if nrf_manager_t user_config !== NULL
   if (user_config != NULL)
@@ -317,7 +317,7 @@ fn_status_t nrf_driver_initialise(nrf_manager_t *user_config) {
  * This driver uses auto-acknowledgement by default and this function 
  * writes the address to the the RX_ADDR_P0 by design.
  * 
- * @param address (uint8_t[]){0x37, 0x37, 0x37, 0x37, 0x37} etc.
+ * @param buffer (uint8_t[]){0x37, 0x37, 0x37, 0x37, 0x37} etc.
  * 
  * @return SPI_MNGR_OK (2), ERROR (0)
  */
@@ -357,7 +357,8 @@ fn_status_t nrf_driver_tx_destination(const uint8_t *buffer) {
  * NOTE: If you do use a 5 byte buffer for data pipes 2 - 5, then the 
  * function will only write one byte (buffer[0]).
  * 
- * @param address (uint8_t[]){0x37, 0x37, 0x37, 0x37, 0x37} etc.
+ * @param data_pipe data_pipe_t enum value (DATA_PIPE_0 - DATA_PIPE_5)
+ * @param buffer (uint8_t[]){0x37, 0x37, 0x37, 0x37, 0x37} etc.
  * 
  * @return SPI_MNGR_OK (2), ERROR (0)
  */
